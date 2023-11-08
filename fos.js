@@ -96,30 +96,33 @@ function cervezasNuevas(arreglo , propiedad , booleano){
         
         return booleano
     } 
-    ).map(arreglo => arreglo.name)
+    )
+    //.map(arreglo => arreglo.name)
    
     return cervezasOrdenadas.slice (0 , 10)
     
 }
 
-console.log(cervezasNuevas(beers , "name" , false))
+console.log(cervezasNuevas(beers , "name" , true))
 
 //EJERCICIO 11
-function crearTabla(array, id){
-    const tabla=document.getElementById("tbody")
-
-    const columnas=document.createElement("tr")
-
-    for (const elementos of array) {
-        if (elementos.name) {
-            let columna1=document.
-            
-        }
-    }
-
+function rellenarTabla(beers, id){
+    const buscartable = document.getElementById(id)
     
-
-
-
-}
-
+    function crearFila (beer){
+    let fila= `<tr>
+    <td>${beer.name}</td>
+    <td>${beer.abv}</td>
+    <td>${beer.ibu}</td>
+    
+    </tr>`
+    return fila
+    }
+    beers.forEach(beer => {
+        let fila2=crearFila(beer)
+        buscartable.innerHTML+=fila2
+    }
+    )
+    }
+    
+    rellenarTabla(cervezasNuevas(beers, "name" , true), "tbody")
